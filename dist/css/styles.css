@@ -7382,7 +7382,7 @@ textarea.form-control-lg {
 }
 
 .text-white {
-  color: #fff !important;
+  color: black !important;
 }
 
 .text-body {
@@ -10867,15 +10867,33 @@ textarea.form-control-lg {
 header.masthead {
   position: relative;
   background-color: #343a40;
-  background: url("../assets/img/bg-masthead.jpg") no-repeat center center;
-  background-size: cover;
+  background: linear-gradient(
+    217deg
+    , rgba(255,0,0,0.8), rgba(255,0,0,0) 50.71%),linear-gradient(
+    127deg
+    , rgba(0,255,0,0.8), rgba(0,255,0,0) 70.71%),linear-gradient(
+    336deg
+    , rgba(0,0,255,0.8), rgba(0,0,255,0) 70.71%);
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
   padding-top: 8rem;
   padding-bottom: 8rem;
+}
+@keyframes gradient {
+  0% {
+      background-position: 0 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0 50%;
+  }
 }
 header.masthead:before {
   content: "";
   position: absolute;
-  background-color: #1c375e;
+  background-color: none;
   height: 100%;
   width: 100%;
   top: 0;
@@ -10931,7 +10949,7 @@ header.masthead h1, header.masthead .h1 {
 .call-to-action:before {
   content: "";
   position: absolute;
-  background-color: #1c375e;
+  background-color: none;
   height: 100%;
   width: 100%;
   top: 0;
