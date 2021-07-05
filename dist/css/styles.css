@@ -10975,7 +10975,7 @@ footer.footer {
 }
  
 
-ul{
+i{
   animation: flow 15s ease-in-out infinite;
   background: rgb(2,108,157);
 background: linear-gradient(90deg, rgba(2,108,157,1) 0%, rgba(232,22,95,1) 100%);
