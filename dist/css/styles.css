@@ -3952,7 +3952,7 @@ textarea.form-control-lg {
 
 .navbar {
   position: relative;
-  display: flex;
+  display: block;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
@@ -10905,12 +10905,13 @@ header.masthead h1, header.masthead .h1 {
 }
 @media (min-width: 768px) {
   header.masthead {
-    padding-top: 12rem;
-    padding-bottom: 12rem;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
   }
   header.masthead h1, header.masthead .h1 {
     font-size: 3rem;
   }
+
 }
 
 .showcase .showcase-text {
@@ -10941,8 +10942,15 @@ header.masthead h1, header.masthead .h1 {
 .call-to-action {
   position: relative;
   background-color: #343a40;
-  background: url("../assets/img/bg-masthead.jpg") no-repeat center center;
-  background-size: cover;
+  background: linear-gradient(
+    217deg
+    , rgba(255,0,0,0.8), rgba(255,0,0,0) 50.71%),linear-gradient(
+    127deg
+    , rgba(0,255,0,0.8), rgba(0,255,0,0) 70.71%),linear-gradient(
+    336deg
+    , rgba(0,0,255,0.8), rgba(0,0,255,0) 70.71%);
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
   padding-top: 7rem;
   padding-bottom: 7rem;
 }
@@ -10961,3 +10969,57 @@ footer.footer {
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
+.bar{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+ 
+
+ul{
+  animation: flow 15s ease-in-out infinite;
+  background: rgb(2,108,157);
+background: linear-gradient(90deg, rgba(2,108,157,1) 0%, rgba(232,22,95,1) 100%);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+} 
+
+
+@keyframes flow {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+  }
+
+  .wiselogo{
+    position: relative;
+    width: 500px;
+
+  }
+  @media (max-width: 768px){
+    .wiselogo{
+width: 300px;}
+
+@media (max-width: 420px){
+  .wiselogo{
+width: 25 0px;
+    }
+
+    @media (min-width: 100px) and (max-width: 375px){
+      .wiselogo{
+  width: 200px;
+      }
+    
+  }
+  .bar{
+    position: center;
+
+  }
+
