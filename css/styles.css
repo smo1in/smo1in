@@ -207,7 +207,7 @@ sup {
 }
 
 a {
-  color: #0d6efd;
+  color: black;
   text-decoration: underline;
 }
 a:hover {
@@ -7350,7 +7350,7 @@ textarea.form-control-lg {
 
 /* rtl:end:remove */
 .text-primary {
-  color: #0d6efd !important;
+  color: #000000 !important;
 }
 
 .text-secondary {
@@ -10975,17 +10975,18 @@ footer.footer {
 }
  
 
-i{
-  animation: flow 15s ease-in-out infinite;
-  background: rgb(2,108,157);
-background: linear-gradient(90deg, rgba(2,108,157,1) 0%, rgba(232,22,95,1) 100%);
+.gradient{
+  animation: flow 15s ease infinite;
+  background: linear-gradient(90deg, rgba(2,108,157,1) 0%, rgba(232,22,95,1) 100%);
   background-size: 300%;
   -webkit-background-clip: text;
-  background-clip: text;
   -webkit-text-fill-color: transparent;
+  
 } 
-
-
+ .bi-emoji-smile{
+   color: #000;
+ }
+  
 @keyframes flow {
     0% {
         background-position: 0 50%;
@@ -11022,4 +11023,7 @@ width: 25 0px;
     position: center;
 
   }
+  
 
+  
+ 
