@@ -11002,22 +11002,27 @@ footer.footer {
 
   .wiselogo{
     position: relative;
-    width: 500px;
+    width: 550px;
 
   }
   @media (max-width: 768px){
     .wiselogo{
-width: 300px;}
+width: 450px;}
 
-@media (max-width: 420px){
+@media (max-width: 480px){
   .wiselogo{
-width: 250px;
+width: 380px;
     }
 
-    @media (min-width: 100px) and (max-width: 375px){
+    @media (max-width: 400px){
       .wiselogo{
-  width: 230px;
+  width: 330px;
       }
+      @media (max-width: 355px){
+        .wiselogo{
+    width: 250px;
+        }
+      
     
   }
   .bar{
