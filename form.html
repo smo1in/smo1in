@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+  <title>send your CV</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+
+<body>
+  <div class="page-wrapper">
+
+    <div class="container">
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-content " id="app">
+            <!-- форма -->
+            <form id="form">
+              <div class="input-field">
+                <i class="material-icons prefix">account_circle</i>
+                <label for="name"></label>
+                <input type="text" name="name" placeholder="Name" />
+              </div>
+
+              <div class="input-field">
+                <i class="material-icons prefix">phone</i>
+                <label for="comment"></label>
+                <input type="text" name="phone" placeholder="WhatsApp number" />
+              </div>
+
+              <div class="file-field input-field">
+                <div class="btn">
+                  <span>CV</span>
+                  <input type="file">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text" name="file2" placeholder="CV can't be more 10Mb" />
+                </div>
+              </div>
+              <div class="file-field input-field">
+                <div class="btn">
+
+                  <span>Photo</span>
+                  <input type="file">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text" name="file1" placeholder="Your Photo" />
+                </div>
+              </div>
+
+              <div class="waves-effect waves-light teal btn">
+                <input type="submit" value="Send" />
+              </div>
+
+            </form>
+            <div id="output"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+</body>
+
+</html>
