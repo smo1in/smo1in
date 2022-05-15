@@ -10875,8 +10875,8 @@ header.masthead {
      , rgb(255 0 191 / 71%), rgb(228 0 255 / 0%) 70.71%),linear-gradient( 
     336deg
      , rgb(255 227 0), rgb(255 237 0 / 0%) 70.71%);
-    background-size: 200% 200%;
-    animation: gradient 15s ease infinite;
+    background-size: 200% 130%;
+    animation: gradient 7s ease infinite;
   padding-top: 8rem;
   padding-bottom: 8rem;
 }
@@ -10951,7 +10951,7 @@ header.masthead h1, header.masthead .h1 {
     336deg
      , rgb(255 227 0), rgb(255 237 0 / 0%) 70.71%);
     background-size: 200% 200%;
-    animation: gradient 15s ease infinite;
+    animation: gradient 3s ease infinite;
   padding-top: 7rem;
   padding-bottom: 7rem;
 }
@@ -10977,7 +10977,7 @@ footer.footer {
  
 
 .gradient{
-  animation: flow 15s ease infinite;
+  animation: flow 10s ease infinite;
   background: linear-gradient(90deg, rgba(2,108,157,1) 0%, rgba(232,22,95,1) 100%);
   background-size: 300%;
   -webkit-background-clip: text;
