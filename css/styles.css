@@ -11960,12 +11960,10 @@ footer.footer {
         position: center;
       }
 
-      aspect-ratio: 16 / 9;
-
       .youtube {
+        position: relative;
         height: 550px;
         width: 440px;
-
       }
 
       @media (max-width: 768px) {
