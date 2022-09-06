@@ -11963,32 +11963,32 @@ footer.footer {
       aspect-ratio: 16 / 9;
 
       .youtube {
-        height: 440px;
-        width: 550px;
+        height: 550px;
+        width: 440px;
 
       }
 
       @media (max-width: 768px) {
         .youtube {
-          height: 360px;
-          width: 450px;
+          height: 450px;
+          width: 360px;
         }
 
         @media (max-width: 480px) {
           .youtube {
-            height: 304px;
-            width: 380px;
+            height: 380px;
+            width: 304px;
           }
 
           @media (max-width: 400px) {
             .youtube {
-              height: 260px;
-              width: 330px;
+              height: 330px;
+              width: 260px;
             }
 
             @media (max-width: 355px) {
               .youtube {
-                height: 200px;
-                width: 250px;
+                height: 250px;
+                width: 200px;
               }
             }
