@@ -11959,33 +11959,3 @@ footer.footer {
       .bar {
         position: center;
       }
-
-      .youtube {
-        height: 550px;
-        width: 440px;
-      }
-
-      @media (max-width: 768px) {
-        .youtube {
-          height: 450px;
-          width: 360px;
-        }
-
-        @media (max-width: 480px) {
-          .youtube {
-            height: 380px;
-            width: 304px;
-          }
-
-          @media (max-width: 400px) {
-            .youtube {
-              height: 330px;
-              width: 260px;
-            }
-
-            @media (max-width: 355px) {
-              .youtube {
-                height: 250px;
-                width: 200px;
-              }
-            }
