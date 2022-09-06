@@ -11960,16 +11960,31 @@ footer.footer {
         position: center;
       }
 
-      .iframe-container{
-        position: center;
-        width: 100%;
-        padding-bottom: 80%; 
-        height: 0;
+      aspect-ratio: 16 / 9;
+
+      .youtube {
+        aspect-ratio: 4 / 5;
+        width: 550px;
+
       }
-      .iframe-container iframe{
-        position: absolute;
-        top:0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
+
+      @media (max-width: 768px) {
+        .youtube {
+          width: 450px;
+        }
+
+        @media (max-width: 480px) {
+          .youtube {
+            width: 380px;
+          }
+
+          @media (max-width: 400px) {
+            .youtube {
+              width: 330px;
+            }
+
+            @media (max-width: 355px) {
+              .youtube {
+                width: 250px;
+              }
+            }
