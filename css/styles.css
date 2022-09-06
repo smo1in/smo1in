@@ -11959,3 +11959,7 @@ footer.footer {
       .bar {
         position: center;
       }
+      .video {
+        aspect-ratio: 4 / 5;
+        width: 100%;
+      }
