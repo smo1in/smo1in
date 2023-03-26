@@ -38,4 +38,23 @@
   100% {
       background-position: 0 50%;
   }
+
+}
+
+.instagram-container {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  padding-bottom: 177.77%; /* 9:16 aspect ratio */
+  overflow: hidden;
+  margin: auto;
+}
+
+.instagram-container iframe,
+.instagram-container blockquote {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
