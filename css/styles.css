@@ -11959,3 +11959,38 @@ footer.footer {
       .bar {
         position: center;
       }
+
+      .icon-block {
+        padding: 0 15px;
+      }
+      .icon-block .material-icons {
+        font-size: inherit;
+      }
+      
+      .page-wrapper{
+        position: relative;
+        background-color: #343a40;
+        background: linear-gradient(
+          217deg
+          , rgba(255,0,0,0.8), rgba(255,0,0,0) 50.71%),linear-gradient(
+          127deg
+          , rgba(255, 0, 191, 0.8), rgba(0,255,0,0) 70.71%),linear-gradient(
+          336deg
+          , rgba(255, 251, 0, 0.8), rgba(0,0,255,0) 70.71%);
+          background-size: 200% 200%;
+          animation: gradient 15s ease infinite;
+        padding-top: 8rem;
+        padding-bottom: 8rem;
+      }
+      @keyframes gradient {
+        0% {
+            background-position: 0 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0 50%;
+        }
+      
+      }
