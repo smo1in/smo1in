@@ -29,15 +29,15 @@
     // Get the <iframe> element
     var iframe = document.getElementById("form-iframe");
 
-    // Wait for the content of the <iframe> to finish loading
-    iframe.onload = function() {
+    // Wait for the <iframe> to finish loading
+    iframe.addEventListener('load', function() {
       // Get the height of the form inside the <iframe>
       var formHeight = iframe.contentWindow.document.body.scrollHeight;
 
       // Set the height of the card content to match the height of the form
       var cardContent = document.querySelector('.card-content');
       cardContent.style.height = formHeight + "px";
-    };
+    });
 
     // Resize the <iframe> whenever the window is resized
     window.addEventListener("resize", function() {
