@@ -14,35 +14,34 @@
 
 <body>
   <div class="page-wrapper">
-    <div class="container" style="height: 800px;">
-  <iframe id="form-iframe" src="https://script.google.com/macros/s/AKfycbxblKtr1YFU_eGj__VZG8sELSLHbSw826EGwOXM4_A9bfmthWnzbjyEk5MOU9f8Uk33sA/exec" frameborder="0" style="width: 100%; height: 100%;"></iframe>
-</div>
+    <div class="container" style="height: 1000px;">
+      <iframe id="form-iframe" src="https://script.google.com/macros/s/AKfycbxblKtr1YFU_eGj__VZG8sELSLHbSw826EGwOXM4_A9bfmthWnzbjyEk5MOU9f8Uk33sA/exec" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+    </div>
+  </div>
 
-<script>
-  var formIframe = document.getElementById('form-iframe');
-  var formContainer = document.getElementById('form-container');
+  <script>
+    // Get the <iframe> element
+    var iframe = document.getElementById("form-iframe");
 
-  function resizeIframe() {
-    formIframe.style.height = formContainer.offsetHeight + 'px';
-    formIframe.contentWindow.document.body.style.height = formContainer.offsetHeight + 'px';
-  }
+    // Wait for the content of the <iframe> to finish loading
+    iframe.onload = function() {
+      // Get the height of the form inside the <iframe>
+      var formHeight = iframe.contentWindow.document.body.scrollHeight;
 
-  window.addEventListener('resize', resizeIframe);
-  resizeIframe();
-</script>
+      // Set the height of the <iframe> to match the height of the form
+      iframe.style.height = formHeight + "px";
+    };
+
+    // Resize the <iframe> whenever the window is resized
+    window.addEventListener("resize", function() {
+      // Get the height of the form inside the <iframe>
+      var formHeight = iframe.contentWindow.document.body.scrollHeight;
+
+      // Set the height of the <iframe> to match the height of the form
+      iframe.style.height = formHeight + "px";
+    });
+  </script>
 </body>
-<script>
-  // Get the <iframe> element
-  var iframe = document.getElementById("form-iframe");
 
-  // Wait for the content of the <iframe> to finish loading
-  iframe.onload = function() {
-    // Get the height of the form inside the <iframe>
-    var formHeight = iframe.contentWindow.document.body.scrollHeight;
-
-    // Set the height of the <iframe> to match the height of the form
-    iframe.style.height = formHeight + "px";
-  };
-</script>
 
 </html>
