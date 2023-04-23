@@ -14,13 +14,22 @@
 
 <body>
   <div class="page-wrapper">
-    <div class="container">
-      <div id="form-wrapper">
-      <iframe
-        src="https://script.google.com/macros/s/AKfycbxblKtr1YFU_eGj__VZG8sELSLHbSw826EGwOXM4_A9bfmthWnzbjyEk5MOU9f8Uk33sA/exec"
-        frameborder="0" style="width: 100%; height: 100%;" scrolling="auto"></iframe>
-      </div>
-    </div>
+    <div id="form-container" style="height: 700px;">
+  <iframe id="form-iframe" src="https://script.google.com/macros/s/AKfycbxblKtr1YFU_eGj__VZG8sELSLHbSw826EGwOXM4_A9bfmthWnzbjyEk5MOU9f8Uk33sA/exec" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+</div>
+
+<script>
+  var formIframe = document.getElementById('form-iframe');
+  var formContainer = document.getElementById('form-container');
+
+  function resizeIframe() {
+    formIframe.style.height = formContainer.offsetHeight + 'px';
+    formIframe.contentWindow.document.body.style.height = formContainer.offsetHeight + 'px';
+  }
+
+  window.addEventListener('resize', resizeIframe);
+  resizeIframe();
+</script>
 </body>
 <script>
   // Get the <iframe> element
