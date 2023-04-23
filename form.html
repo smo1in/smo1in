@@ -18,7 +18,18 @@
       <div class="col s12 m8 offset-m2 l6 offset-l3">
         <div class="card">
           <div class="card-content" style="height: 800px;">
-            <iframe id="form-iframe" src="https://script.google.com/macros/s/AKfycbxblKtr1YFU_eGj__VZG8sELSLHbSw826EGwOXM4_A9bfmthWnzbjyEk5MOU9f8Uk33sA/exec" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+            <div class="preloader-wrapper active" id="loading-spinner">
+              <div class="spinner-layer spinner-red-only">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+            <iframe id="form-iframe" src="https://script.google.com/macros/s/AKfycbxblKtr1YFU_eGj__VZG8sELSLHbSw826EGwOXM4_A9bfmthWnzbjyEk5MOU9f8Uk33sA/exec" frameborder="0" style="width: 100%; height: 100%; display: none;"></iframe>
           </div>
         </div>
       </div>
@@ -26,17 +37,32 @@
   </div>
 
   <script>
-    // Get the <iframe> element
+    // Get the <iframe> element and the loading spinner element
     var iframe = document.getElementById("form-iframe");
+    var loadingSpinner = document.getElementById("loading-spinner");
+
+    // Show the loading spinner
+    loadingSpinner.style.display = "block";
 
     // Wait for the <iframe> to finish loading
     iframe.addEventListener('load', function() {
+      // Hide the loading spinner
+      loadingSpinner.style.display = "none";
+
       // Get the height of the form inside the <iframe>
       var formHeight = iframe.contentWindow.document.body.scrollHeight;
 
       // Set the height of the card content to match the height of the form
       var cardContent = document.querySelector('.card-content');
       cardContent.style.height = formHeight + "px";
+
+      // Show the <iframe>
+      iframe.style.display = "block";
+
+      // Modify the style of the <iframe>
+      iframe.style.border = "1px solid #ccc";
+      iframe.style.borderRadius = "5px";
+      iframe.style.boxShadow = "0px 0px 5px #ccc";
     });
 
     // Resize the <iframe> whenever the window is resized
