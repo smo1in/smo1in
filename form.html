@@ -14,8 +14,8 @@
 
 <body>
   <div class="page-wrapper">
-    <div class="card">
-      <div class="card-content" style="height: 800px;">
+    <div class="card" style="height: 900px;">
+      <div class="card-content" >
           </div>
           <iframe id="form-iframe" src="https://script.google.com/macros/s/AKfycbzFhCknesyGlnUSyKNLyDOs9wotLndrFIUGQBeKhbFq6d-Fld8MKDP_ZERQW5S66r804A/exec" frameborder="0" scrolling="auto"></iframe>          </div>
         </div>
@@ -24,28 +24,6 @@
     </div>
   </div>
 
-  <script>
-    // Get the <iframe> element
-    var iframe = document.getElementById("form-iframe");
-  
-    // Wait for the <iframe> to finish loading
-    iframe.addEventListener('load', function() {
-      // Modify the style of the <iframe>
-      iframe.style.border = "1px solid #ccc";
-      iframe.style.borderRadius = "5px";
-      iframe.style.boxShadow = "0px 0px 5px #ccc";
-    });
-  
-    // Listen for messages from the <iframe> and update the height of the card content
-    window.addEventListener('message', function(event) {
-      // Check if the message is a number (height)
-      if (!isNaN(event.data)) {
-        // Set the height of the card content to match the height of the form
-        var cardContent = document.querySelector('.card-content');
-        cardContent.style.height = event.data + "px";
-      }
-    });
-  </script>
 </body>
 
 
