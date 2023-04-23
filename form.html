@@ -18,9 +18,22 @@
       <div id="form-wrapper">
       <iframe
         src="https://script.google.com/macros/s/AKfycbxblKtr1YFU_eGj__VZG8sELSLHbSw826EGwOXM4_A9bfmthWnzbjyEk5MOU9f8Uk33sA/exec"
-        frameborder="0" style="width: 100%; height: 100%;" scrolling="auto"></iframe>
+        frameborder="0" style="width: 100%; height: auto;" scrolling="auto"></iframe>
       </div>
     </div>
 </body>
+<script>
+  // Get the <iframe> element
+  var iframe = document.getElementById("form-iframe");
+
+  // Wait for the content of the <iframe> to finish loading
+  iframe.onload = function() {
+    // Get the height of the form inside the <iframe>
+    var formHeight = iframe.contentWindow.document.body.scrollHeight;
+
+    // Set the height of the <iframe> to match the height of the form
+    iframe.style.height = formHeight + "px";
+  };
+</script>
 
 </html>
