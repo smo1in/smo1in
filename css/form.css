@@ -28,8 +28,8 @@
   background-size: 200% 200%;
   /* Set the animation properties with a duration of 15 seconds and an ease timing function */
   animation: gradient 15s ease infinite;
-  padding-top: 8rem;
-  padding-bottom: 8rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 /* Define the animation keyframes with the desired background positions */
