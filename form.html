@@ -10,19 +10,18 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
   <link href="css/form.css" rel="stylesheet" />
 
-  <!-- Meta Pixel Code - Consider deferring or async loading -->
+  <!-- Meta Pixel Code -->
   <script>
     !function(f,b,e,v,n,t,s) { /* Facebook Pixel Code */ }
   </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1423655175201543&ev=PageView&noscript=1" /></noscript>
-  <!-- End Meta Pixel Code -->
 
-  <!-- Custom Style -->
   <style>
-    /* Custom styles for the preloader */
+    /* Custom styles for the preloader and body padding */
     body, html {
       height: 100%;
       margin: 0;
+      padding-top: 20px; /* Added top padding */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -38,27 +37,33 @@
       font-size: 20px;
       color: #000;
     }
+
+    #iframe {
+      width: 100%;
+      border: none;
+      display: none; /* Hide until loaded */
+    }
   </style>
 </head>
 <body>
   <!-- Preloader Container -->
   <div id="preloader-container">
-      <!-- Preloader -->
-      <div class="preloader-wrapper big active">
-          <div class="spinner-layer spinner-blue">
-              <div class="circle-clipper left">
-                  <div class="circle"></div>
-              </div>
-              <div class="gap-patch">
-                  <div class="circle"></div>
-              </div>
-              <div class="circle-clipper right">
-                  <div class="circle"></div>
-              </div>
-          </div>
+    <!-- Preloader -->
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
       </div>
-      <!-- Loading Text -->
-      <div class="loading-text">Loading...</div>
+    </div>
+    <!-- Loading Text -->
+    <div class="loading-text">Loading...</div>
   </div>
 
   <!-- Iframe with Lazy Loading -->
@@ -66,7 +71,6 @@
       id="iframe" 
       src="https://script.google.com/macros/s/AKfycbwsBfXRD7Xkd1KorCMRQLU5ZL4jPUTxWA8WITvLhsTuQVf8NF9n40yJiorGOj6QisXeZw/exec" 
       frameborder="0" 
-      style="width: 100%; height: 990px; display:none;" 
       loading="lazy">
   </iframe>
 
@@ -74,26 +78,28 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
   <script src="js/custom.js" defer></script>
   
-  <!-- Iframe Loading Handling -->
+  <!-- Iframe Loading and Resizing Handling -->
   <script defer>
     document.addEventListener('DOMContentLoaded', function() {
         var iframe = document.getElementById('iframe');
+
         iframe.onload = function() {
             document.getElementById('preloader-container').style.display = 'none';
             iframe.style.display = 'block';
         };
 
-        // Error handling if the iframe fails to load
         iframe.onerror = function() {
             document.getElementById('preloader-container').style.display = 'none';
             console.error('Iframe failed to load.');
         };
 
-        // Fallback in case onload doesn't trigger
-        setTimeout(function() {
-            document.getElementById('preloader-container').style.display = 'none';
-            iframe.style.display = 'block';
-        }, 1000); // 1 seconds timeout
+        // Listen for messages from the iframe
+        window.addEventListener('message', function(event) {
+            // Check for a specific message from the iframe and adjust the height
+            if (event.data.frameHeight) {
+                iframe.style.height = event.data.frameHeight + 'px';
+            }
+        }, false);
     });
   </script>
 </body>
