@@ -16,8 +16,9 @@
   </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1423655175201543&ev=PageView&noscript=1" /></noscript>
 
+  <!-- Custom Style -->
   <style>
-    /* Custom styles for the preloader and body padding */
+    /* Custom styles for the preloader and additional top padding */
     body, html {
       height: 100%;
       margin: 0;
@@ -37,11 +38,11 @@
       font-size: 20px;
       color: #000;
     }
-
+    
     #iframe {
       width: 100%;
-      border: none;
-      display: none; /* Hide until loaded */
+      height: 990px;
+      display: none; /* Initially hide iframe */
     }
   </style>
 </head>
@@ -68,21 +69,20 @@
 
   <!-- Iframe with Lazy Loading -->
   <iframe 
-      id="iframe" 
-      src="https://script.google.com/macros/s/AKfycbwsBfXRD7Xkd1KorCMRQLU5ZL4jPUTxWA8WITvLhsTuQVf8NF9n40yJiorGOj6QisXeZw/exec" 
-      frameborder="0" 
-      loading="lazy">
+    id="iframe" 
+    src="https://script.google.com/macros/s/AKfycbwsBfXRD7Xkd1KorCMRQLU5ZL4jPUTxWA8WITvLhsTuQVf8NF9n40yJiorGOj6QisXeZw/exec" 
+    frameborder="0" 
+    loading="lazy">
   </iframe>
 
   <!-- Deferred JavaScript Loading -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
   <script src="js/custom.js" defer></script>
   
-  <!-- Iframe Loading and Resizing Handling -->
+  <!-- Iframe Loading Handling -->
   <script defer>
     document.addEventListener('DOMContentLoaded', function() {
         var iframe = document.getElementById('iframe');
-
         iframe.onload = function() {
             document.getElementById('preloader-container').style.display = 'none';
             iframe.style.display = 'block';
@@ -93,13 +93,12 @@
             console.error('Iframe failed to load.');
         };
 
-        // Listen for messages from the iframe
-        window.addEventListener('message', function(event) {
-            // Check for a specific message from the iframe and adjust the height
-            if (event.data.frameHeight) {
-                iframe.style.height = event.data.frameHeight + 'px';
+        setTimeout(function() {
+            if (iframe.style.display === 'none') {
+                document.getElementById('preloader-container').style.display = 'none';
+                iframe.style.display = 'block';
             }
-        }, false);
+        }, 3000); // 3 seconds timeout as a fallback
     });
   </script>
 </body>
