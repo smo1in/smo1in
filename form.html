@@ -82,6 +82,18 @@
             document.getElementById('preloader-container').style.display = 'none';
             iframe.style.display = 'block';
         };
+
+        // Error handling if the iframe fails to load
+        iframe.onerror = function() {
+            document.getElementById('preloader-container').style.display = 'none';
+            console.error('Iframe failed to load.');
+        };
+
+        // Fallback in case onload doesn't trigger
+        setTimeout(function() {
+            document.getElementById('preloader-container').style.display = 'none';
+            iframe.style.display = 'block';
+        }, 10000); // 10 seconds timeout
     });
   </script>
 </body>
