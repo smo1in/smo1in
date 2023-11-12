@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
   <title>Send Your CV</title>
 
-  <!-- CSS -->
+  <!-- Optimized CSS Loading -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
   <link href="css/form.css" rel="stylesheet" />
 
-  <!-- Meta Pixel Code -->
+  <!-- Meta Pixel Code - Consider deferring or async loading -->
   <script>
     !function(f,b,e,v,n,t,s) { /* Facebook Pixel Code */ }
   </script>
@@ -19,6 +19,7 @@
 
   <!-- Custom Style -->
   <style>
+    /* Custom styles for the preloader */
     body, html {
       height: 100%;
       margin: 0;
@@ -42,31 +43,31 @@
 <body>
   <!-- Preloader Container -->
   <div id="preloader-container">
-    <!-- Preloader -->
-    <div class="preloader-wrapper big active">
-      <div class="spinner-layer spinner-blue">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div>
-        <div class="gap-patch">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
+      <!-- Preloader -->
+      <div class="preloader-wrapper big active">
+          <div class="spinner-layer spinner-blue">
+              <div class="circle-clipper left">
+                  <div class="circle"></div>
+              </div>
+              <div class="gap-patch">
+                  <div class="circle"></div>
+              </div>
+              <div class="circle-clipper right">
+                  <div class="circle"></div>
+              </div>
+          </div>
       </div>
-    </div>
-    <!-- Loading Text -->
-    <div class="loading-text">Loading...</div>
+      <!-- Loading Text -->
+      <div class="loading-text">Loading...</div>
   </div>
 
   <!-- Iframe with Lazy Loading -->
   <iframe 
-    id="iframe" 
-    src="https://script.google.com/macros/s/AKfycbwsBfXRD7Xkd1KorCMRQLU5ZL4jPUTxWA8WITvLhsTuQVf8NF9n40yJiorGOj6QisXeZw/exec" 
-    frameborder="0" 
-    style="width: 100%; height: 990px; display:none;" 
-    loading="lazy">
+      id="iframe" 
+      src="https://script.google.com/macros/s/AKfycbwsBfXRD7Xkd1KorCMRQLU5ZL4jPUTxWA8WITvLhsTuQVf8NF9n40yJiorGOj6QisXeZw/exec" 
+      frameborder="0" 
+      style="width: 100%; height: 990px; display:none;" 
+      loading="lazy">
   </iframe>
 
   <!-- Deferred JavaScript Loading -->
@@ -82,10 +83,17 @@
             iframe.style.display = 'block';
         };
 
+        // Error handling if the iframe fails to load
         iframe.onerror = function() {
             document.getElementById('preloader-container').style.display = 'none';
             console.error('Iframe failed to load.');
         };
+
+        // Fallback in case onload doesn't trigger
+        setTimeout(function() {
+            document.getElementById('preloader-container').style.display = 'none';
+            iframe.style.display = 'block';
+        }, 1000); // 1 seconds timeout
     });
   </script>
 </body>
