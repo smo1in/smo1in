@@ -89,15 +89,14 @@
         iframe.onload = function() {
             document.getElementById('preloader-container').style.display = 'none';
             iframe.style.display = 'block';
-            iframe.contentWindow.scrollTo(0,0); // Attempt to scroll to top of the iframe content
         };
-
+    
         // Error handling if the iframe fails to load
         iframe.onerror = function() {
             document.getElementById('preloader-container').style.display = 'none';
             console.error('Iframe failed to load.');
         };
     });
-  </script>
+    </script>
 </body>
 </html>
