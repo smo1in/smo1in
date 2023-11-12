@@ -15,14 +15,14 @@
     !function(f,b,e,v,n,t,s) { /* Facebook Pixel Code */ }
   </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1423655175201543&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel Code -->
 
   <!-- Custom Style -->
   <style>
-    /* Custom styles for the preloader and additional top padding */
+    /* Custom styles for the preloader */
     body, html {
       height: 100%;
       margin: 0;
-      padding-top: 20px; /* Added top padding */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -38,41 +38,36 @@
       font-size: 20px;
       color: #000;
     }
-    
-    #iframe {
-      width: 100%;
-      height: 990px;
-      display: none; /* Initially hide iframe */
-    }
   </style>
 </head>
 <body>
   <!-- Preloader Container -->
   <div id="preloader-container">
-    <!-- Preloader -->
-    <div class="preloader-wrapper big active">
-      <div class="spinner-layer spinner-blue">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div>
-        <div class="gap-patch">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
+      <!-- Preloader -->
+      <div class="preloader-wrapper big active">
+          <div class="spinner-layer spinner-blue">
+              <div class="circle-clipper left">
+                  <div class="circle"></div>
+              </div>
+              <div class="gap-patch">
+                  <div class="circle"></div>
+              </div>
+              <div class="circle-clipper right">
+                  <div class="circle"></div>
+              </div>
+          </div>
       </div>
-    </div>
-    <!-- Loading Text -->
-    <div class="loading-text">Loading...</div>
+      <!-- Loading Text -->
+      <div class="loading-text">Loading...</div>
   </div>
 
   <!-- Iframe with Lazy Loading -->
   <iframe 
-    id="iframe" 
-    src="https://script.google.com/macros/s/AKfycbwsBfXRD7Xkd1KorCMRQLU5ZL4jPUTxWA8WITvLhsTuQVf8NF9n40yJiorGOj6QisXeZw/exec" 
-    frameborder="0" 
-    loading="lazy">
+      id="iframe" 
+      src="https://script.google.com/macros/s/AKfycbwsBfXRD7Xkd1KorCMRQLU5ZL4jPUTxWA8WITvLhsTuQVf8NF9n40yJiorGOj6QisXeZw/exec" 
+      frameborder="0" 
+      style="width: 100%; height: 1000px; display:none;" 
+      loading="lazy">
   </iframe>
 
   <!-- Deferred JavaScript Loading -->
@@ -88,17 +83,17 @@
             iframe.style.display = 'block';
         };
 
+        // Error handling if the iframe fails to load
         iframe.onerror = function() {
             document.getElementById('preloader-container').style.display = 'none';
             console.error('Iframe failed to load.');
         };
 
+        // Fallback in case onload doesn't trigger
         setTimeout(function() {
-            if (iframe.style.display === 'none') {
-                document.getElementById('preloader-container').style.display = 'none';
-                iframe.style.display = 'block';
-            }
-        }, 3000); // 3 seconds timeout as a fallback
+            document.getElementById('preloader-container').style.display = 'none';
+            iframe.style.display = 'block';
+        }, 3000); // 3 seconds timeout
     });
   </script>
 </body>
