@@ -28,12 +28,12 @@
       align-items: center;
     }
 
-    #preloader {
+    #preloader-container {
       position: absolute;
       text-align: center;
     }
 
-    #preloader .loading-text {
+    #preloader-container .loading-text {
       margin-top: 20px;
       font-size: 20px;
       color: #000;
@@ -42,19 +42,23 @@
 </head>
 
 <body>
-  <!-- Preloader -->
-  <div class="preloader-wrapper big active" id="preloader">
-      <div class="spinner-layer spinner-blue">
-          <div class="circle-clipper left">
-              <div class="circle"></div>
-          </div>
-          <div class="gap-patch">
-              <div class="circle"></div>
-          </div>
-          <div class="circle-clipper right">
-              <div class="circle"></div>
+  <!-- Preloader Container -->
+  <div id="preloader-container">
+      <!-- Preloader -->
+      <div class="preloader-wrapper big active">
+          <div class="spinner-layer spinner-blue">
+              <div class="circle-clipper left">
+                  <div class="circle"></div>
+              </div>
+              <div class="gap-patch">
+                  <div class="circle"></div>
+              </div>
+              <div class="circle-clipper right">
+                  <div class="circle"></div>
+              </div>
           </div>
       </div>
+      <!-- Loading Text -->
       <div class="loading-text">Loading...</div>
   </div>
 
@@ -75,7 +79,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         var iframe = document.getElementById('iframe');
         iframe.onload = function() {
-            document.getElementById('preloader').style.display = 'none';
+            document.getElementById('preloader-container').style.display = 'none';
             iframe.style.display = 'block';
         };
     });
