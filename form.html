@@ -8,7 +8,7 @@
   <!-- Optimized CSS Loading -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
-  <link href="css/form.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" /> <!-- Ensure this path is correct -->
 
   <!-- Meta Pixel Code -->
   <script>
@@ -40,33 +40,33 @@
     }
 
     #iframe {
-        width: 100%;
-        height: 1200px; /* Adjusted height */
-        display: block; /* Ensure the iframe is displayed */
-        border: none;
-        overflow: hidden; /* Hide scrollbars to prevent internal scrolling */
+      width: 100%;
+      height: 1200px; /* Adjusted height */
+      display: block; /* Ensure the iframe is displayed */
+      border: none;
+      overflow: hidden; /* Hide scrollbars to prevent internal scrolling */
     }
   </style>
 </head>
 <body>
   <!-- Preloader Container -->
   <div id="preloader-container">
-      <!-- Preloader -->
-      <div class="preloader-wrapper big active">
-          <div class="spinner-layer spinner-blue">
-              <div class="circle-clipper left">
-                  <div class="circle"></div>
-              </div>
-              <div class="gap-patch">
-                  <div class="circle"></div>
-              </div>
-              <div class="circle-clipper right">
-                  <div the="circle"></div>
-              </div>
-          </div>
+    <!-- Preloader -->
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
       </div>
-      <!-- Loading Text -->
-      <div class="loading-text">Loading...</div>
+    </div>
+    <!-- Loading Text -->
+    <div class="loading-text">Loading...</div>
   </div>
 
   <!-- Iframe with Lazy Loading -->
@@ -80,23 +80,22 @@
 
   <!-- Deferred JavaScript Loading -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
-  <script src="js/custom.js" defer></script>
   
   <!-- Iframe Loading Handling -->
   <script defer>
     document.addEventListener('DOMContentLoaded', function() {
-        var iframe = document.getElementById('iframe');
-        iframe.onload = function() {
-            document.getElementById('preloader-container').style.display = 'none';
-            iframe.style.display = 'block';
-        };
-    
-        // Error handling if the iframe fails to load
-        iframe.onerror = function() {
-            document.getElementById('preloader-container').style.display = 'none';
-            console.error('Iframe failed to load.');
-        };
+      var iframe = document.getElementById('iframe');
+      iframe.onload = function() {
+        document.getElementById('preloader-container').style.display = 'none';
+        iframe.style.display = 'block';
+      };
+
+      // Error handling if the iframe fails to load
+      iframe.onerror = function() {
+        document.getElementById('preloader-container').style.display = 'none';
+        console.error('Iframe failed to load.');
+      };
     });
-    </script>
+  </script>
 </body>
 </html>
