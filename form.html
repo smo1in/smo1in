@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
   <title>Send Your CV</title>
 
-  <!-- CSS -->
+  <!-- Optimized CSS Loading -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link href="css/form.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
+  <link href="css/form.css" rel="stylesheet" />
 
-  <!-- Meta Pixel Code -->
+  <!-- Meta Pixel Code - Consider deferring or async loading -->
   <script>
     !function(f,b,e,v,n,t,s) { /* Facebook Pixel Code */ }
   </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1423655175201543&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
 
+  <!-- Custom Style -->
   <style>
     /* Custom styles for the preloader */
     body, html {
@@ -40,7 +40,6 @@
     }
   </style>
 </head>
-
 <body>
   <!-- Preloader Container -->
   <div id="preloader-container">
@@ -62,7 +61,7 @@
       <div class="loading-text">Loading...</div>
   </div>
 
-  <!-- Iframe -->
+  <!-- Iframe with Lazy Loading -->
   <iframe 
       id="iframe" 
       src="https://script.google.com/macros/s/AKfycbwsBfXRD7Xkd1KorCMRQLU5ZL4jPUTxWA8WITvLhsTuQVf8NF9n40yJiorGOj6QisXeZw/exec" 
@@ -71,11 +70,12 @@
       loading="lazy">
   </iframe>
 
-  <!-- JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="js/custom.js"></script>
-
-  <script>
+  <!-- Deferred JavaScript Loading -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
+  <script src="js/custom.js" defer></script>
+  
+  <!-- Iframe Loading Handling -->
+  <script defer>
     document.addEventListener('DOMContentLoaded', function() {
         var iframe = document.getElementById('iframe');
         iframe.onload = function() {
@@ -97,5 +97,4 @@
     });
   </script>
 </body>
-
 </html>
