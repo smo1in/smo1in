@@ -1,70 +1,65 @@
 <!DOCTYPE html>
- <html lang="en">
- <head>
-   <meta http-equiv="Pragma" content="no-cache">
- <meta http-equiv="Expires" content="-1">
- <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
-   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-   <title>Send Your CV</title>
+<html lang="en">
+<head>
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="-1">
+  <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+  <title>Send Your CV</title>
 
-   <!-- CSS -->
-   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
+  <!-- CSS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
+</head>
+<body>
+  <!-- Preloader Container -->
+  <div id="preloader-container">
+    <!-- Preloader -->
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Loading Text -->
+    <div class="loading-text">Loading...</div>
+  </div>
 
- </head>
- <body>
-   <!-- Preloader Container -->
-   <div id="preloader-container">
-     <!-- Preloader -->
-     <div class="preloader-wrapper big active">
-       <div class="spinner-layer spinner-blue">
-         <div class="circle-clipper left">
-           <div class="circle"></div>
-         </div>
-         <div class="gap-patch">
-           <div class="circle"></div>
-         </div>
-         <div class="circle-clipper right">
-           <div class="circle"></div>
-         </div>
-       </div>
-     </div>
-     <!-- Loading Text -->
-     <div class="loading-text">Loading...</div>
-   </div>
-
-   <!-- Iframe with Lazy Loading -->
-
-
-   <div style="overflow: auto; height: 1200px;">
+  <!-- Iframe with Lazy Loading -->
+  <div style="overflow: auto; height: 1200px;">
     <iframe 
-      id="iframe"
+      id="iframe" 
       src="https://script.google.com/macros/s/AKfycbzIqYUR44HXhSXG3EL9SBnxO1Amc8iodk5qNfUk_ZE5dYMNDGXBQov1U5zPj6Uer16VHg/exec" 
       frameborder="0"
-      style="width: 100%; display:block;"
-      loading="lazy">
+      style="width: 100%; height: 100%;">
     </iframe>
   </div>
 
-   <!-- Deferred JavaScript Loading -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
+  <!-- Deferred JavaScript Loading -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
 
-   <!-- Iframe Loading Handling -->
-   <script defer>
-     document.addEventListener('DOMContentLoaded', function() {
-       var iframe = document.getElementById('iframe');
-       iframe.onload = function() {
-         document.getElementById('preloader-container').style.display = 'none';
-         iframe.style.display = 'block';
-       };
+  <!-- Iframe Loading Handling -->
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+      var iframe = document.getElementById('iframe');
+      iframe.onload = function() {
+        document.getElementById('preloader-container').style.display = 'none';
+      };
 
-       // Error handling if the iframe fails to load
-       iframe.onerror = function() {
-         document.getElementById('preloader-container').style.display = 'none';
-         console.error('Iframe failed to load.');
-       };
-     });
-   </script>
- </body>
- </html>
+      // Error handling if the iframe fails to load
+      iframe.onerror = function() {
+        document.getElementById('preloader-container').style.display = 'none';
+        console.error('Iframe failed to load.');
+      };
+    });
+  </script>
+</body>
+</html>
