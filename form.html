@@ -30,7 +30,7 @@
 <body>
     <div class="application">
         <div class="container">
-          <form id="application-form">
+          <form id="application-form" enctype="multipart/form-data">
             <!-- Form fields here -->
             <div class="input-field">
                 <i class="material-icons prefix">email</i>
@@ -115,25 +115,24 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
-        document.getElementById('application-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            var formData = new FormData(this);
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'https://script.google.com/macros/s/AKfycbzVAG_DVsIRZuNqcpKVPbCnb1v9aJeeopYujLh2rlGAdHzyCnG3ACPExJhbT_B3wgHV/exec', true);
+      document.getElementById('application-form').addEventListener('submit', function(event) {
+          event.preventDefault();
+          var formData = new FormData(this);
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', 'https://script.google.com/macros/s/AKfycbyAqAfObmOhNZOG9T4N-UNj0DlcC9aCHQO7QY-qKeEM25mQ5zl2XaxpEtxS5IeaTo3Z/exec', true);
 
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    M.toast({html: 'Your application has been submitted successfully!'});
-                    // Optional: Reset the form or redirect the user
-                    // document.getElementById('application-form').reset();
-                    // window.location.href = 'thank-you-page.html';
-                } else if (xhr.readyState === 4) {
-                    M.toast({html: 'Submission failed. Please try again.'});
-                }
-            };
+          xhr.onreadystatechange = function() {
+              if (xhr.readyState === 4 && xhr.status === 200) {
+                  alert('Form submitted successfully.');
+                  // Additional success handling
+              } else if (xhr.readyState === 4) {
+                  alert('Submission failed.');
+                  // Additional failure handling
+              }
+          };
 
-            xhr.send(formData);
-        });
-    </script>
+          xhr.send(formData);
+      });
+  </script>
 </body>
 </html>
