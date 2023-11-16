@@ -1,100 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="-1">
-<meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-  <title>Send Your CV</title>
 
-  <!-- CSS -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
-
-
-  <!-- Meta Pixel Code -->
-  <script>
-    !function(f,b,e,v,n,t,s) { /* Facebook Pixel Code */ }
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1423655175201543&ev=PageView&noscript=1" />
-  </noscript>
-  <!-- End Meta Pixel Code -->
-
-  <!-- Custom Style -->
-  <style>
-    #preloader-container {
-      position: fixed; /* Using fixed position so it doesn't affect iframe */
-      top: 50%; /* Centering the preloader */
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-    }
-
-    #preloader-container .loading-text {
-      margin-top: 20px;
-      font-size: 20px;
-      color: #000;
-    }
-
-    #iframe {
-      width: 100%;
-      height: 1200px; /* Adjusted height for consistency */
-      border: none; /* Removing the border */
-      overflow-y: auto; /* Enabling vertical scrolling */
-      position: relative; /* Positioning relative to its normal position */
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Form</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        /* Add your CSS styles here */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .application-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .input-field {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        /* Additional styles */
+    </style>
 </head>
 <body>
-  <!-- Preloader Container -->
-  <div id="preloader-container">
-    <!-- Preloader -->
-    <div class="preloader-wrapper big active">
-      <div class="spinner-layer spinner-blue">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
+    <div class="application">
+        <div class="container">
+          <form id="application-form" enctype="multipart/form-data">
+            <!-- Form fields here -->
+            <div class="input-field">
+                <i class="material-icons prefix">email</i>
+                <input id="email" type="email" class="validate" name="email" required />
+                <label for="email">Email</label>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">phone</i>
+                <input id="whatsapp" type="text" class="validate" name="whatsapp" required />
+                <label for="whatsapp">WhatsApp</label>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="first-name" type="text" class="validate" name="first-name" required />
+                <label for="first-name">Name</label>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">account_box</i>
+                <input id="last-name" type="text" class="validate" name="last-name" required />
+                <label for="last-name">Surname</label>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">work</i>
+                <input id="position" type="text" class="validate" name="position" required />
+                <label for="position">Position you are applying for</label>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">attach_money</i>
+                <input id="salary" type="number" class="validate" name="salary" required />
+                <label for="salary">Salary expectations ($)</label>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">location_on</i>
+                <input id="location" type="text" class="validate" name="location" required />
+                <label for="location">Current location</label>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">info</i>
+                <input id="source" type="text" class="validate" name="source" required />
+                <label for="source">How did you know about Wise?</label>
+            </div>
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>Your CV</span>
+                    <input type="file" id="cv" name="cv" required />
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate s6" type="text" placeholder="Upload your CV in PDF or Word format" />
+                </div>
+            </div>
+
+            <div id="loading-indicator" style="display: none;">
+                <div class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-blue-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+                <p>Sending your application...</p>
+            </div>
+
+                <button class="waves-effect waves-light btn" type="submit" id="submit-btn" name="action">
+                    <i class="material-icons right">send</i>Submit
+                </button>
+            </form>
+
+            <div class="social-icons">
+                <!-- Social icons -->
+                <a href="https://www.instagram.com/wise.recruitment/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/wise-recruitment-me/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://t.me/wiserecruitmentme" target="_blank"><i class="fab fa-telegram"></i></a>
+            </div>
         </div>
-        <div class="gap-patch">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
     </div>
-    <!-- Loading Text -->
-    <div class="loading-text">Loading...</div>
-  </div>
 
-  <!-- Iframe with Lazy Loading -->
-  <iframe 
-    id="iframe" 
-    src="https://script.google.com/macros/s/AKfycbzfzBvn3jmw7GI60gwDuv61He_4pHO41WFFZoFxuZwZbEsXfs67Jt89DW4AnDX3cdqLJQ/exec" 
-    frameborder="0" 
-    style="width: 100%; height: 950px; display:block;" 
-    loading="lazy">
-  </iframe>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      document.getElementById('application-form').addEventListener('submit', function(event) {
+          event.preventDefault();
+          var formData = new FormData(this);
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', 'https://script.google.com/macros/s/AKfycbxh9_GNndljHjTSiF0riiE2aoV51HQ4phZ6Y911uWy1_BG6i3oI-4cx_5vP531d5W9J/exec', true);
 
-  <!-- Deferred JavaScript Loading -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
-  
-  <!-- Iframe Loading Handling -->
-  <script defer>
-    document.addEventListener('DOMContentLoaded', function() {
-      var iframe = document.getElementById('iframe');
-      iframe.onload = function() {
-        document.getElementById('preloader-container').style.display = 'none';
-        iframe.style.display = 'block';
-      };
+          xhr.onreadystatechange = function() {
+              if (xhr.readyState === 4 && xhr.status === 200) {
+                  alert('Form submitted successfully.');
+                  // Additional success handling
+              } else if (xhr.readyState === 4) {
+                  alert('Submission failed.');
+                  // Additional failure handling
+              }
+          };
 
-      // Error handling if the iframe fails to load
-      iframe.onerror = function() {
-        document.getElementById('preloader-container').style.display = 'none';
-        console.error('Iframe failed to load.');
-      };
-    });
+          xhr.send(formData);
+      });
   </script>
 </body>
 </html>
