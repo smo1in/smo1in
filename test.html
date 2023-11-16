@@ -1,84 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="-1">
-  <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-  <title>Send Your CV</title>
-
-  <!-- CSS -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Your CV</title>
+    <!-- Add your CSS here if needed -->
 </head>
 <body>
-  <!-- Preloader Container -->
-  <div id="preloader-container">
-    <!-- Preloader -->
-    <div class="preloader-wrapper big active">
-      <div class="spinner-layer spinner-blue">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div>
-        <div class="gap-patch">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
-    </div>
-    <!-- Loading Text -->
-    <div class="loading-text">Loading...</div>
-  </div>
+    <form id="cvUploadForm">
+        <!-- Text Inputs -->
+        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="text" name="whatsapp" placeholder="WhatsApp" required><br>
+        <input type="text" name="firstName" placeholder="First Name" required><br>
+        <input type="text" name="lastName" placeholder="Last Name" required><br>
+        <input type="text" name="position" placeholder="Position" required><br>
+        <input type="number" name="salary" placeholder="Salary" required><br>
+        <input type="text" name="location" placeholder="Location" required><br>
+        <input type="text" name="source" placeholder="How did you know about us?" required><br>
 
-  <!-- Iframe with Lazy Loading -->
-  <div style="overflow: auto; height: 1200px;">
-    <iframe 
-      id="iframe" 
-      src="https://script.google.com/macros/s/AKfycbzIqYUR44HXhSXG3EL9SBnxO1Amc8iodk5qNfUk_ZE5dYMNDGXBQov1U5zPj6Uer16VHg/exec" 
-      frameborder="0"
-      style="width: 100%; height: 100%;">
-    </iframe>
-  </div>
+        <!-- File Input for CV -->
+        <input type="file" name="cv" required><br>
 
-  <!-- Deferred JavaScript Loading -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
+        <button type="submit">Submit</button>
+    </form>
 
-  <!-- Iframe Loading Handling -->
-  <script defer>
-    document.addEventListener('DOMContentLoaded', function() {
-      var iframe = document.getElementById('iframe');
-      iframe.onload = function() {
-        document.getElementById('preloader-container').style.display = 'none';
-      };
+    <script>
+        document.getElementById('cvUploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
 
-      // Error handling if the iframe fails to load
-      iframe.onerror = function() {
-        document.getElementById('preloader-container').style.display = 'none';
-        console.error('Iframe failed to load.');
-      };
-    });
-  </script>
+            var formData = new FormData(event.target);
+            var object = {};
+            formData.forEach((value, key) => { object[key] = value; });
 
-  <!-- Form Submission and Redirect Handling -->
-  <script>
-    document.getElementById('application-form').addEventListener('submit', function (event) {
-      event.preventDefault();
-      // ... existing form handling code ...
+            // Special handling for the file
+            if (formData.get('cv')) {
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    object['cv'] = event.target.result; // Base64 string of the file
+                    object['cvName'] = formData.get('cv').name; // Name of the file
+                    submitForm(object);
+                };
+                reader.readAsDataURL(formData.get('cv'));
+            } else {
+                submitForm(object);
+            }
+        });
 
-      google.script.run
-          .withSuccessHandler(() => {
-              M.toast({
-                  html: 'Your application has been submitted! Join our hospitality community by following us on social media.'
-              });
-              window.location.href = 'https://wise-recruitment.me/thanks'; // Redirect to the thank you page
-          })
-          .processForm(Object.fromEntries(formData));
-      
-      // ... existing form handling code ...
-    });
-  </script>
+        function submitForm(object) {
+            fetch('https://script.google.com/macros/s/AKfycbwNCs2dfAzwLZ5IMTWgR-C1i_lzRK7v9n8s75K-FKEY1QG_h70Qw1qpLdkGTkNuMPZO/exec', {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(object)
+            })
+            .then(response => console.log('Success:', response))
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
 </body>
 </html>
