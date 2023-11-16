@@ -61,5 +61,24 @@
       };
     });
   </script>
+
+  <!-- Form Submission and Redirect Handling -->
+  <script>
+    document.getElementById('application-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      // ... existing form handling code ...
+
+      google.script.run
+          .withSuccessHandler(() => {
+              M.toast({
+                  html: 'Your application has been submitted! Join our hospitality community by following us on social media.'
+              });
+              window.location.href = 'https://wise-recruitment.me/thanks'; // Redirect to the thank you page
+          })
+          .processForm(Object.fromEntries(formData));
+      
+      // ... existing form handling code ...
+    });
+  </script>
 </body>
 </html>
