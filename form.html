@@ -119,7 +119,7 @@
             event.preventDefault();
             var formData = new FormData(this);
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'https://script.google.com/macros/s/AKfycbyAqAfObmOhNZOG9T4N-UNj0DlcC9aCHQO7QY-qKeEM25mQ5zl2XaxpEtxS5IeaTo3Z/exec', true);
+            xhr.open('GET', 'https://script.google.com/macros/s/AKfycbyAqAfObmOhNZOG9T4N-UNj0DlcC9aCHQO7QY-qKeEM25mQ5zl2XaxpEtxS5IeaTo3Z/exec', true);
 
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
