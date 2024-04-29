@@ -28,6 +28,18 @@
       color: #000;
     }
 
+    .spinner-layer.spinner-blue {
+      border-color: #64b5f6 !important; /* Changed border color to blue */
+    }
+
+    .spinner-layer.spinner-blue .circle {
+      border-color: #64b5f6 transparent transparent transparent !important; /* Changed border color to blue */
+    }
+
+    .spinner-layer.spinner-blue .circle-clipper {
+      border-color: #64b5f6 transparent transparent transparent !important; /* Changed border color to blue */
+    }
+
     #iframe {
       width: 100%;
       height: 1000px; /* Adjusted height for consistency */
@@ -79,14 +91,11 @@
         iframe.style.display = 'block';
       };
 
-      // Detect Instagram in-app browser on iPhone
-      var ua = navigator.userAgent || navigator.vendor || window.opera;
-      var isIPhoneInstagram = (ua.indexOf('Instagram') > -1) && (ua.indexOf('iPhone') > -1);
-      
-      if (isIPhoneInstagram) {
-        // Display alert advising to open in external browser
-        alert("Due to Instagram's IOS limitations, please open this form in your device's regular browser by tapping the three dots at the top right corner and selecting 'Open in external browser'.");
-      }
+      // Error handling if the iframe fails to load
+      iframe.onerror = function() {
+        document.getElementById('preloader-container').style.display = 'none';
+        alert('Due to Instagram IOS limits, please open this form in your device\'s regular browser by tapping the three dots at the top right corner and selecting \'Open in external browser\'.');
+      };
     });
   </script>
 </body>
