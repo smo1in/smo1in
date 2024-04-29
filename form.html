@@ -1,90 +1,105 @@
 <!DOCTYPE html>
- <html lang="en">
- <head>
-   <meta http-equiv="Pragma" content="no-cache">
- <meta http-equiv="Expires" content="-1">
- <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
-   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-   <title>Send Your CV</title>
+<html lang="en">
+<head>
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="-1">
+  <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+  <title>Send Your CV</title>
 
-   <!-- CSS -->
-   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
+  <!-- CSS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
 
 
-   <style>
-     #preloader-container {
-       position: fixed; /* Using fixed position so it doesn't affect iframe */
-       top: 50%; /* Centering the preloader */
-       left: 50%;
-       transform: translate(-50%, -50%);
-       text-align: center;
-     }
+  <style>
+    #preloader-container {
+      position: fixed; /* Using fixed position so it doesn't affect iframe */
+      top: 50%; /* Centering the preloader */
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
 
-     #preloader-container .loading-text {
-       margin-top: 20px;
-       font-size: 20px;
-       color: #000;
-     }
+    #preloader-container .loading-text {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #000;
+    }
 
-     #iframe {
-       width: 100%;
-       height: 1000px; /* Adjusted height for consistency */
-       border: none; /* Removing the border */
-       overflow-y: auto; /* Enabling vertical scrolling */
-       position: relative; /* Positioning relative to its normal position */
-     }
-   </style>
- </head>
- <body>
-   <!-- Preloader Container -->
-   <div id="preloader-container">
-     <!-- Preloader -->
-     <div class="preloader-wrapper big active">
-       <div class="spinner-layer spinner-blue">
-         <div class="circle-clipper left">
-           <div class="circle"></div>
-         </div>
-         <div class="gap-patch">
-           <div class="circle"></div>
-         </div>
-         <div class="circle-clipper right">
-           <div class="circle"></div>
-         </div>
-       </div>
-     </div>
-     <!-- Loading Text -->
-     <div class="loading-text">Loading...</div>
-   </div>
+    #iframe {
+      width: 100%;
+      height: 1000px; /* Adjusted height for consistency */
+      border: none; /* Removing the border */
+      overflow-y: auto; /* Enabling vertical scrolling */
+      position: relative; /* Positioning relative to its normal position */
+    }
 
-   <!-- Iframe with Lazy Loading -->
-   <iframe 
-     id="iframe" 
-     src="https://script.google.com/macros/s/AKfycbwNBGmWqn16x-ArXQi0U1SP5t5xwiFfANlpCTqzvWhb7g4FcbY77WHcEIXO5hnvrMfKTw/exec" 
-     frameborder="0" 
-     style="width: 100%; height: 1000 px; display:block;" 
-     loading="lazy">
-   </iframe>
+    /* Style specific to Instagram in-app browser */
+    .instagram-browser #preloader-container {
+      background-color: #f00; /* Change background color for visibility */
+    }
+  </style>
+</head>
+<body>
+  <!-- Preloader Container -->
+  <div id="preloader-container">
+    <!-- Preloader -->
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Loading Text -->
+    <div class="loading-text">Loading...</div>
+  </div>
 
-   <!-- Deferred JavaScript Loading -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
+  <!-- Iframe with Lazy Loading -->
+  <iframe 
+    id="iframe" 
+    src="https://script.google.com/macros/s/AKfycbwNBGmWqn16x-ArXQi0U1SP5t5xwiFfANlpCTqzvWhb7g4FcbY77WHcEIXO5hnvrMfKTw/exec" 
+    frameborder="0" 
+    style="width: 100%; height: 1000 px; display:block;" 
+    loading="lazy">
+  </iframe>
 
-   <!-- Iframe Loading Handling -->
-   <script defer>
-     document.addEventListener('DOMContentLoaded', function() {
-       var iframe = document.getElementById('iframe');
-       iframe.onload = function() {
-         document.getElementById('preloader-container').style.display = 'none';
-         iframe.style.display = 'block';
-       };
+  <!-- Deferred JavaScript Loading -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
 
-       // Error handling if the iframe fails to load
-       iframe.onerror = function() {
-         document.getElementById('preloader-container').style.display = 'none';
-         console.error('Iframe failed to load.');
-       };
-     });
-   </script>
- </body>
- </html>
+  <!-- Iframe Loading Handling -->
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+      var iframe = document.getElementById('iframe');
+      iframe.onload = function() {
+        document.getElementById('preloader-container').style.display = 'none';
+        iframe.style.display = 'block';
+      };
+
+      // Error handling if the iframe fails to load
+      iframe.onerror = function() {
+        document.getElementById('preloader-container').style.display = 'none';
+        console.error('Iframe failed to load.');
+      };
+
+      // Detect Instagram in-app browser
+      var ua = navigator.userAgent || navigator.vendor || window.opera;
+      var isInstagram = (ua.indexOf('Instagram') > -1) ? true : false;
+      if (isInstagram) {
+        // Add class to body for styling
+        document.body.classList.add('instagram-browser');
+        // Alert for debugging purposes
+        alert("Debugging within the Instagram in-app browser");
+      }
+    });
+  </script>
+</body>
+</html>
