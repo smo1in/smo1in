@@ -98,6 +98,12 @@
       iframe.onerror = function() {
         document.getElementById('preloader-container').style.display = 'none';
         console.error('Iframe failed to load.');
+        // Attempt to log error message from iframe content window
+        try {
+          console.error(iframe.contentWindow.document.body.innerHTML);
+        } catch (err) {
+          console.error('Error accessing iframe content:', err);
+        }
         alert('Iframe failed to load. Please try again later.');
       };
     });
