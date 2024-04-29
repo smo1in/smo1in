@@ -35,11 +35,6 @@
       overflow-y: auto; /* Enabling vertical scrolling */
       position: relative; /* Positioning relative to its normal position */
     }
-
-    /* Style specific to Instagram in-app browser */
-    .instagram-browser #preloader-container {
-      background-color: #f00; /* Change background color for visibility */
-    }
   </style>
 </head>
 <body>
@@ -82,30 +77,16 @@
       iframe.onload = function() {
         document.getElementById('preloader-container').style.display = 'none';
         iframe.style.display = 'block';
-
-        // Detect Instagram in-app browser
-        var ua = navigator.userAgent || navigator.vendor || window.opera;
-        var isInstagram = (ua.indexOf('Instagram') > -1) ? true : false;
-        if (isInstagram) {
-          // Add class to body for styling
-          document.body.classList.add('instagram-browser');
-          // Alert for debugging purposes
-          alert("Debugging within the Instagram in-app browser");
-        }
       };
 
-      // Error handling if the iframe fails to load
-      iframe.onerror = function() {
-        document.getElementById('preloader-container').style.display = 'none';
-        console.error('Iframe failed to load.');
-        // Attempt to log error message from iframe content window
-        try {
-          console.error(iframe.contentWindow.document.body.innerHTML);
-        } catch (err) {
-          console.error('Error accessing iframe content:', err);
-        }
-        alert('Iframe failed to load. Please try again later.');
-      };
+      // Detect Instagram in-app browser on iPhone
+      var ua = navigator.userAgent || navigator.vendor || window.opera;
+      var isIPhoneInstagram = (ua.indexOf('Instagram') > -1) && (ua.indexOf('iPhone') > -1);
+      
+      if (isIPhoneInstagram) {
+        // Display alert advising to open in external browser
+        alert("Due to Instagram's limitations, please open this form in your device's regular browser by tapping the three dots at the top right corner and selecting 'Open in external browser'.");
+      }
     });
   </script>
 </body>
