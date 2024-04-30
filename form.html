@@ -36,6 +36,25 @@
       position: relative; /* Positioning relative to its normal position */
     }
   </style>
+  <!-- Iframe Loading Handling -->
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+      var iframe = document.getElementById('iframe');
+      iframe.onload = function() {
+        document.getElementById('preloader-container').style.display = 'none';
+        iframe.style.display = 'block';
+      };
+
+      // Detect Instagram in-app browser on iPhone
+      var ua = navigator.userAgent || navigator.vendor || window.opera;
+      var isIPhoneInstagram = (ua.indexOf('Instagram') > -1) && (ua.indexOf('iPhone') > -1);
+      
+      if (isIPhoneInstagram) {
+        // Display alert advising to open in external browser
+        alert("Due to Instagram's IOS limitations, please open this form in your device's regular browser by tapping the three dots at the top right corner and selecting 'Open in external browser'.");
+      }
+    });
+  </script>
 </head>
 <body>
   <!-- Preloader Container -->
@@ -70,24 +89,6 @@
   <!-- Deferred JavaScript Loading -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
 
-  <!-- Iframe Loading Handling -->
-  <script defer>
-    document.addEventListener('DOMContentLoaded', function() {
-      var iframe = document.getElementById('iframe');
-      iframe.onload = function() {
-        document.getElementById('preloader-container').style.display = 'none';
-        iframe.style.display = 'block';
-      };
-
-      // Detect Instagram in-app browser on iPhone
-      var ua = navigator.userAgent || navigator.vendor || window.opera;
-      var isIPhoneInstagram = (ua.indexOf('Instagram') > -1) && (ua.indexOf('iPhone') > -1);
-      
-      if (isIPhoneInstagram) {
-        // Display alert advising to open in external browser
-        alert("Due to Instagram's IOS limitations, please open this form in your device's regular browser by tapping the three dots at the top right corner and selecting 'Open in external browser'.");
-      }
-    });
-  </script>
+  
 </body>
 </html>
