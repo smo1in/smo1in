@@ -63,12 +63,16 @@
       to { transform: rotate(360deg); }
     }
 
-    #iframe {
+    .iframe-container {
       width: 100%;
-      height: 1000px;
+      height: calc(100vh - 60px); /* Adjust height to fit the viewport */
+      overflow-y: auto; /* Enable scrolling within the iframe container */
+    }
+
+    .iframe-container iframe {
+      width: 100%;
+      height: 100%;
       border: none;
-      overflow-y: auto;
-      display: none;
     }
 
     /* Media Queries for Mobile Devices */
@@ -80,10 +84,6 @@
 
       #preloader-container .loading-text {
         font-size: 16px;
-      }
-
-      #iframe {
-        height: 800px;
       }
     }
   </style>
@@ -127,13 +127,15 @@
     <div class="loading-text">Loading...</div>
   </div>
 
-  <!-- Iframe with Lazy Loading -->
-  <iframe 
-    id="iframe" 
-    src="https://script.google.com/macros/s/AKfycbw4N73Ftm_ZQLkJjp-5yIcbO9dldkibswAvuTCSrodbMLfWqIQ5RMLX1q2M9KyV5-wE8w/exec" 
-    frameborder="0" 
-    loading="lazy">
-  </iframe>
+  <!-- Iframe Container with Lazy Loading -->
+  <div class="iframe-container">
+    <iframe 
+      id="iframe" 
+      src="https://script.google.com/macros/s/AKfycbypY8p4E543owNZhltiTiGJolQMz_BxmEEukAQllPew-Pue3FMEzNtvaR7EJZ6NhewuWg/exec" 
+      frameborder="0" 
+      loading="lazy">
+    </iframe>
+  </div>
 
   <!-- Deferred JavaScript Loading -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
