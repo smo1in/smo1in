@@ -92,10 +92,18 @@
   <script defer>
     document.addEventListener('DOMContentLoaded', function() {
       var iframe = document.getElementById('iframe');
+      var preloaderContainer = document.getElementById('preloader-container');
+      
       iframe.onload = function() {
-        document.getElementById('preloader-container').style.display = 'none';
+        clearTimeout(loadingTimeout);
+        preloaderContainer.style.display = 'none';
         iframe.style.display = 'block';
       };
+
+      var loadingTimeout = setTimeout(function() {
+        preloaderContainer.style.display = 'none';
+        iframe.style.display = 'block';
+      }, 5000); // Timeout set to 5 seconds
 
       // Detect Instagram in-app browser on iPhone
       var ua = navigator.userAgent || navigator.vendor || window.opera;
