@@ -12,30 +12,61 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
 
-
   <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
     #preloader-container {
-      position: fixed; /* Using fixed position so it doesn't affect iframe */
-      top: 50%; /* Centering the preloader */
+      position: fixed;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #preloader-container .preloader-wrapper {
+      margin: 0 auto;
     }
 
     #preloader-container .loading-text {
       margin-top: 20px;
-      font-size: 20px;
-      color: #000;
+      font-size: 18px;
+      color: #0073e6;
     }
 
     #iframe {
       width: 100%;
-      height: 1000px; /* Adjusted height for consistency */
-      border: none; /* Removing the border */
-      overflow-y: auto; /* Enabling vertical scrolling */
-      position: relative; /* Positioning relative to its normal position */
+      height: 1000px;
+      border: none;
+      overflow-y: auto;
+      display: none;
+    }
+
+    /* Media Queries for Mobile Devices */
+    @media (max-width: 600px) {
+      #preloader-container {
+        width: 80%;
+        padding: 20px;
+      }
+
+      #preloader-container .loading-text {
+        font-size: 16px;
+      }
+
+      #iframe {
+        height: 800px;
+      }
     }
   </style>
+
   <!-- Iframe Loading Handling -->
   <script defer>
     document.addEventListener('DOMContentLoaded', function() {
@@ -51,7 +82,7 @@
       
       if (isIPhoneInstagram) {
         // Display alert advising to open in external browser
-        alert("Due to Instagram's IOS limitations, please open this form in your device's regular browser by tapping the three dots at the top right corner and selecting 'Open in external browser'.");
+        alert("Due to Instagram's iOS limitations, please open this form in your device's regular browser by tapping the three dots at the top right corner and selecting 'Open in external browser'.");
       }
     });
   </script>
@@ -80,15 +111,12 @@
   <!-- Iframe with Lazy Loading -->
   <iframe 
     id="iframe" 
-    src="https://script.google.com/macros/s/AKfycbwNBGmWqn16x-ArXQi0U1SP5t5xwiFfANlpCTqzvWhb7g4FcbY77WHcEIXO5hnvrMfKTw/exec" 
+    src="https://script.google.com/macros/s/AKfycbw4N73Ftm_ZQLkJjp-5yIcbO9dldkibswAvuTCSrodbMLfWqIQ5RMLX1q2M9KyV5-wE8w/exec" 
     frameborder="0" 
-    style="width: 100%; height: 1000px; display:block;" 
     loading="lazy">
   </iframe>
 
   <!-- Deferred JavaScript Loading -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
-
-  
 </body>
 </html>
