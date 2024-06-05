@@ -20,6 +20,10 @@
       font-family: 'Roboto', sans-serif;
       background-color: #f4f4f4;
       width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     #preloader-container {
@@ -67,7 +71,7 @@
 
     #iframe {
       width: 100%;
-      height: 100vh;
+      height: 100vh; /* Full viewport height */
       border: none;
       display: none;
     }
@@ -75,16 +79,12 @@
     /* Media Queries for Mobile Devices */
     @media (max-width: 600px) {
       #preloader-container {
-        width: 100%;
-        padding: 0px;
+        width: 80%;
+        padding: 20px;
       }
 
       #preloader-container .loading-text {
         font-size: 16px;
-      }
-
-      #iframe {
-        height: 80vh;
       }
     }
   </style>
@@ -104,7 +104,7 @@
       var loadingTimeout = setTimeout(function() {
         preloaderContainer.style.display = 'none';
         iframe.style.display = 'block';
-      }, 5000); // Timeout set to 5 seconds
+      }, 6000); // Timeout set to 5 seconds
 
       // Detect Instagram in-app browser on iPhone
       var ua = navigator.userAgent || navigator.vendor || window.opera;
