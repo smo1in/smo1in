@@ -86,6 +86,10 @@
       #preloader-container .loading-text {
         font-size: 16px;
       }
+
+      #iframe {
+        height: 100vh; /* Full viewport height */
+      }
     }
   </style>
 
@@ -104,7 +108,7 @@
       var loadingTimeout = setTimeout(function() {
         preloaderContainer.style.display = 'none';
         iframe.style.display = 'block';
-      }, 6000); // Timeout set to 5 seconds
+      }, 5000); // Timeout set to 5 seconds
 
       // Detect Instagram in-app browser on iPhone
       var ua = navigator.userAgent || navigator.vendor || window.opera;
