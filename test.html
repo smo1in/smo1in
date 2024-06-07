@@ -1,63 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submit Your CV</title>
-    <!-- Add your CSS here if needed -->
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="-1">
+  <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Send Your CV</title>
+
+  <!-- CSS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden; /* Prevent horizontal scrolling */
+      font-family: 'Roboto', sans-serif;
+      width: 100%;
+      height: 100%;
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 0 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0 50%;
+      }
+    }
+
+    #preloader-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      background: linear-gradient(
+        217deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0) 50.71%),
+        linear-gradient(127deg, rgba(255, 0, 191, 0.8), rgba(0, 255, 0, 0) 70.71%),
+        linear-gradient(336deg, rgba(255, 251, 0, 0.8), rgba(0, 0, 255, 0) 70.71%);
+      background-size: 200% 200%;
+      animation: gradient 3s linear infinite;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 10; /* Ensure preloader is on top */
+    }
+
+    #preloader-container .loading-text {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #fff;
+      font-weight: 500;
+      animation: fadeIn 1.5s infinite;
+    }
+
+    @keyframes fadeIn {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    #iframe {
+      width: 100%;
+      height: 100vh; /* Full viewport height */
+      border: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    /* Media Queries for Mobile Devices */
+    @media (max-width: 600px) {
+      #preloader-container {
+        width: 80%;
+        padding: 20px;
+      }
+
+      #preloader-container .loading-text {
+        font-size: 16px;
+      }
+
+      #iframe {
+        height: 100vh; /* Full viewport height */
+      }
+    }
+  </style>
+
+  <!-- Iframe Loading Handling -->
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+      var iframe = document.getElementById('iframe');
+      var preloaderContainer = document.getElementById('preloader-container');
+
+      // Start loading the iframe in the background
+      iframe.src = iframe.dataset.src;
+
+      iframe.onload = function() {
+        clearTimeout(loadingTimeout);
+        preloaderContainer.style.display = 'none';
+        iframe.style.display = 'block';
+      };
+
+      var loadingTimeout = setTimeout(function() {
+        preloaderContainer.style.display = 'none';
+        iframe.style.display = 'block';
+      }, 5000); // Timeout set to 5 seconds
+
+      // Detect Instagram in-app browser on iPhone
+      var ua = navigator.userAgent || navigator.vendor || window.opera;
+      var isIPhoneInstagram = (ua.indexOf('Instagram') > -1) && (ua.indexOf('iPhone') > -1);
+      
+      if (isIPhoneInstagram) {
+        // Display alert advising to open in external browser
+        alert("Due to Instagram's iOS limitations, please open this form in your device's regular browser by tapping the three dots at the top right corner and selecting 'Open in external browser'.");
+      }
+    });
+  </script>
 </head>
 <body>
-    <form id="cvUploadForm">
-        <!-- Text Inputs -->
-        <input type="email" name="email" placeholder="Email" required><br>
-        <input type="text" name="whatsapp" placeholder="WhatsApp" required><br>
-        <input type="text" name="firstName" placeholder="First Name" required><br>
-        <input type="text" name="lastName" placeholder="Last Name" required><br>
-        <input type="text" name="position" placeholder="Position" required><br>
-        <input type="number" name="salary" placeholder="Salary" required><br>
-        <input type="text" name="location" placeholder="Location" required><br>
-        <input type="text" name="source" placeholder="How did you know about us?" required><br>
+  <!-- Preloader Container -->
+  <div id="preloader-container">
+    <!-- Preloader -->
+    <div class="preloader-wrapper">
+      <div class="spinner"></div>
+    </div>
+    <!-- Loading Text -->
+    <div class="loading-text">Loading...</div>
+  </div>
 
-        <!-- File Input for CV -->
-        <input type="file" name="cv" required><br>
+  <!-- Iframe with Lazy Loading -->
+  <iframe 
+    id="iframe"
+    data-src="https://script.google.com/macros/s/AKfycbysSxRp9uZ21gdgS8zuxtO1klmGG5TqNn0jhQxZREORloMkL9J2TRPVoh9zrJxnc9o/exec" 
+    frameborder="0"
+    loading="lazy">
+  </iframe>
 
-        <button type="submit">Submit</button>
-    </form>
-
-    <script>
-        document.getElementById('cvUploadForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            var formData = new FormData(event.target);
-            var object = {};
-            formData.forEach((value, key) => { object[key] = value; });
-
-            // Special handling for the file
-            if (formData.get('cv')) {
-                var reader = new FileReader();
-                reader.onload = function(event) {
-                    object['cv'] = event.target.result; // Base64 string of the file
-                    object['cvName'] = formData.get('cv').name; // Name of the file
-                    submitForm(object);
-                };
-                reader.readAsDataURL(formData.get('cv'));
-            } else {
-                submitForm(object);
-            }
-        });
-
-        function submitForm(object) {
-            fetch('https://script.google.com/macros/s/AKfycbwNCs2dfAzwLZ5IMTWgR-C1i_lzRK7v9n8s75K-FKEY1QG_h70Qw1qpLdkGTkNuMPZO/exec', {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(object)
-            })
-            .then(response => console.log('Success:', response))
-            .catch(error => console.error('Error:', error));
-        }
-    </script>
+  <!-- Deferred JavaScript Loading -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
 </body>
 </html>

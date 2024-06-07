@@ -18,30 +18,8 @@
       padding: 0;
       overflow-x: hidden; /* Prevent horizontal scrolling */
       font-family: 'Roboto', sans-serif;
-      background-color: #f4f4f4;
       width: 100%;
       height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #preloader-container {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      background-color: #343a40;
-      background: linear-gradient(
-        217deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0) 50.71%),
-        linear-gradient(127deg, rgba(255, 0, 191, 0.8), rgba(0, 255, 0, 0) 70.71%),
-        linear-gradient(336deg, rgba(255, 251, 0, 0.8), rgba(0, 0, 255, 0) 70.71%);
-      background-size: 200% 200%;
-      animation: gradient 5s linear infinite;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     @keyframes gradient {
@@ -56,8 +34,22 @@
       }
     }
 
-    #preloader-container .preloader-wrapper {
-      margin: 0 auto;
+    #preloader-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      background: linear-gradient(
+        217deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0) 50.71%),
+        linear-gradient(127deg, rgba(255, 0, 191, 0.8), rgba(0, 255, 0, 0) 70.71%),
+        linear-gradient(336deg, rgba(255, 251, 0, 0.8), rgba(0, 0, 255, 0) 70.71%);
+      background-size: 200% 200%;
+      animation: gradient 3s linear infinite;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 10; /* Ensure preloader is on top */
     }
 
     #preloader-container .loading-text {
@@ -91,7 +83,9 @@
       width: 100%;
       height: 100vh; /* Full viewport height */
       border: none;
-      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
     /* Media Queries for Mobile Devices */
@@ -116,7 +110,10 @@
     document.addEventListener('DOMContentLoaded', function() {
       var iframe = document.getElementById('iframe');
       var preloaderContainer = document.getElementById('preloader-container');
-      
+
+      // Start loading the iframe in the background
+      iframe.src = iframe.dataset.src;
+
       iframe.onload = function() {
         clearTimeout(loadingTimeout);
         preloaderContainer.style.display = 'none';
@@ -152,9 +149,9 @@
 
   <!-- Iframe with Lazy Loading -->
   <iframe 
-    id="iframe" 
-    src="https://script.google.com/macros/s/AKfycbyfLMuKYKf_a7WP-SJQT6kvSdQTcekKA1hR95yrQKO6wCz8JzPZNmJzVFEhPSyIc4EntQ/exec" 
-    frameborder="0" 
+    id="iframe"
+    data-src="https://script.google.com/macros/s/AKfycbysSxRp9uZ21gdgS8zuxtO1klmGG5TqNn0jhQxZREORloMkL9J2TRPVoh9zrJxnc9o/exec" 
+    frameborder="0"
     loading="lazy">
   </iframe>
 
