@@ -16,7 +16,7 @@
     html, body {
       margin: 0;
       padding: 0;
-      overflow-x: hidden; /* Prevent horizontal scrolling */
+      overflow: hidden; /* Prevent scrolling in the parent document */
       font-family: 'Roboto', sans-serif;
       width: 100%;
       height: 100%;
@@ -79,9 +79,16 @@
       to { transform: rotate(360deg); }
     }
 
-    #iframe {
+    #iframe-container {
       width: 100%;
       height: 100vh; /* Full viewport height */
+      overflow: hidden;
+      position: relative;
+    }
+
+    #iframe {
+      width: 100%;
+      height: 100%;
       border: none;
       position: absolute;
       top: 0;
@@ -147,13 +154,15 @@
     <div class="loading-text">Loading...</div>
   </div>
 
-  <!-- Iframe with Lazy Loading -->
-  <iframe 
-    id="iframe"
-    data-src="https://script.google.com/macros/s/AKfycbwMWMhl8kweYN4t-390FsjxbYnoEdTmzOwOeHylrypWOKIF24kPR2ciyp9FYseusPOeBw/exec" 
-    frameborder="0"
-    loading="lazy">
-  </iframe>
+  <!-- Iframe Container -->
+  <div id="iframe-container">
+    <iframe 
+      id="iframe"
+      data-src="https://script.google.com/macros/s/AKfycbyTljNPlH5UwnWf8tXj9m9e8MJwp7ecGRFMhfqanOqIzuEiNh_ivt8RkoTCREDJ9p87eQ/exec" 
+      frameborder="0"
+      loading="lazy">
+    </iframe>
+  </div>
 
   <!-- Deferred JavaScript Loading -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
