@@ -118,11 +118,13 @@
         clearTimeout(loadingTimeout);
         preloaderContainer.style.display = 'none';
         iframe.style.display = 'block';
+        iframe.contentWindow.scrollTo(0, 0);
       };
 
       var loadingTimeout = setTimeout(function() {
         preloaderContainer.style.display = 'none';
         iframe.style.display = 'block';
+        iframe.contentWindow.scrollTo(0, 0);
       }, 5000); // Timeout set to 5 seconds
 
       // Detect Instagram in-app browser on iPhone
@@ -150,7 +152,7 @@
   <!-- Iframe with Lazy Loading -->
   <iframe 
     id="iframe"
-    data-src="https://script.google.com/macros/s/AKfycbwMWMhl8kweYN4t-390FsjxbYnoEdTmzOwOeHylrypWOKIF24kPR2ciyp9FYseusPOeBw/exec" 
+    data-src="https://script.google.com/macros/s/AKfycbweBJoLfE3uhISOBN4kjQqG_63TNfzEj3a87ZYIspEYpZu707EgRqQpHmI7P7ISH5ZQgw/exec" 
     frameborder="0"
     loading="lazy">
   </iframe>
