@@ -112,9 +112,20 @@
     }
   </style>
 
-  <!-- Iframe Loading Handling -->
+  <!-- Iframe Loading and Redirect Handling -->
   <script defer>
     document.addEventListener('DOMContentLoaded', function() {
+      // Detect Instagram in-app browser on iPhone
+      var ua = navigator.userAgent || navigator.vendor || window.opera;
+      var isIPhoneInstagram = (ua.indexOf('Instagram') > -1) && (ua.indexOf('iPhone') > -1);
+      
+      if (isIPhoneInstagram) {
+        // Redirect to the external URL.
+        // Replace the URL below with the one you want the user to open in the external browser.
+        window.location.href = "https://wise-recruitment.me/form";
+        return; // Stop further execution so the in-app version does not continue loading.
+      }
+
       var iframe = document.getElementById('iframe');
       var preloaderContainer = document.getElementById('preloader-container');
 
@@ -131,15 +142,6 @@
         preloaderContainer.style.display = 'none';
         iframe.style.display = 'block';
       }, 5000); // Timeout set to 5 seconds
-
-      // Detect Instagram in-app browser on iPhone
-      var ua = navigator.userAgent || navigator.vendor || window.opera;
-      var isIPhoneInstagram = (ua.indexOf('Instagram') > -1) && (ua.indexOf('iPhone') > -1);
-      
-      if (isIPhoneInstagram) {
-        // Display alert advising to open in external browser
-        alert("Due to Instagram's iOS limitations, please open this form in your device's regular browser by tapping the three dots at the top right corner and selecting 'Open in external browser'.");
-      }
     });
   </script>
 </head>
