@@ -21,7 +21,6 @@
       width: 100%;
       height: 100%;
     }
-
     @keyframes gradient {
       0% {
         background-position: 0 50%;
@@ -33,7 +32,6 @@
         background-position: 0 50%;
       }
     }
-
     #preloader-container {
       position: fixed;
       top: 50%;
@@ -51,7 +49,6 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       z-index: 10; /* Ensure preloader is on top */
     }
-
     #preloader-container .loading-text {
       margin-top: 20px;
       font-size: 18px;
@@ -59,12 +56,10 @@
       font-weight: 500;
       animation: fadeIn 1.5s infinite;
     }
-
     @keyframes fadeIn {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.5; }
     }
-
     .spinner {
       display: inline-block;
       width: 50px;
@@ -74,18 +69,15 @@
       border-top-color: #fff;
       animation: spin 1s ease-in-out infinite;
     }
-
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
-
     #iframe-container {
       width: 100%;
       height: 100vh; /* Full viewport height */
       overflow: hidden;
       position: relative;
     }
-
     #iframe {
       width: 100%;
       height: 100%;
@@ -94,18 +86,15 @@
       top: 0;
       left: 0;
     }
-
     /* Media Queries for Mobile Devices */
     @media (max-width: 600px) {
       #preloader-container {
         width: 80%;
         padding: 20px;
       }
-
       #preloader-container .loading-text {
         font-size: 16px;
       }
-
       #iframe {
         height: 100vh; /* Full viewport height */
       }
@@ -120,10 +109,13 @@
       var isIPhoneInstagram = (ua.indexOf('Instagram') > -1) && (ua.indexOf('iPhone') > -1);
       
       if (isIPhoneInstagram) {
-        // Redirect to the external URL.
-        // Replace the URL below with the one you want the user to open in the external browser.
-        window.location.href = "https://wise-recruitment.me/form";
-        return; // Stop further execution so the in-app version does not continue loading.
+        // Use a confirm dialog so the user can choose to redirect
+        var userChoice = confirm("Due to Instagram's iOS limitations, please open this form in your device's regular browser by tapping the three dots at the top right corner and selecting 'Open in external browser'.\n\nWould you like to open the form externally now?");
+        if (userChoice) {
+          // Redirect to your external URL (modify this URL as needed)
+          window.location.href = "https://wise-recruitment.me/form";
+          return; // Stop further execution
+        }
       }
 
       var iframe = document.getElementById('iframe');
