@@ -16,21 +16,15 @@
     html, body {
       margin: 0;
       padding: 0;
-      overflow: hidden; /* Prevent scrolling in the parent document */
+      overflow: hidden;
       font-family: 'Roboto', sans-serif;
       width: 100%;
       height: 100%;
     }
     @keyframes gradient {
-      0% {
-        background-position: 0 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0 50%;
-      }
+      0% { background-position: 0 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0 50%; }
     }
     #preloader-container {
       position: fixed;
@@ -47,7 +41,7 @@
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      z-index: 10; /* Ensure preloader is on top */
+      z-index: 10;
     }
     #preloader-container .loading-text {
       margin-top: 20px;
@@ -74,7 +68,7 @@
     }
     #iframe-container {
       width: 100%;
-      height: 100vh; /* Full viewport height */
+      height: 100vh;
       overflow: hidden;
       position: relative;
     }
@@ -86,7 +80,6 @@
       top: 0;
       left: 0;
     }
-    /* Media Queries for Mobile Devices */
     @media (max-width: 600px) {
       #preloader-container {
         width: 80%;
@@ -96,7 +89,7 @@
         font-size: 16px;
       }
       #iframe {
-        height: 100vh; /* Full viewport height */
+        height: 100vh;
       }
     }
   </style>
@@ -108,20 +101,32 @@
       var ua = navigator.userAgent || navigator.vendor || window.opera;
       var isIPhoneInstagram = (ua.indexOf('Instagram') > -1) && (ua.indexOf('iPhone') > -1);
       
-      if (isIPhoneInstagram) {
-        // Use a confirm dialog so the user can choose to redirect
-        var userChoice = confirm("Due to Instagram's iOS limitations, please open this form in your device's regular browser by tapping the three dots at the top right corner and selecting 'Open in external browser'.\n\nWould you like to open the form externally now?");
+      // Use URLSearchParams to check for a parameter that indicates we've already redirected
+      var urlParams = new URLSearchParams(window.location.search);
+      var alreadyRedirected = urlParams.get('redirected');
+      
+      if (isIPhoneInstagram && !alreadyRedirected) {
+        // Show a confirm dialog and, if the user agrees, open the external URL in a new window/tab.
+        var userChoice = confirm("Due to Instagram's iOS limitations, please open this form in your device's regular browser.\n\nWould you like to open it externally now?");
         if (userChoice) {
-          // Redirect to your external URL (modify this URL as needed)
-          window.location.href = "https://wise-recruitment.me/form";
-          return; // Stop further execution
+          // Append a parameter to avoid redirect loops.
+          var externalUrl = "https://wise-recruitment.me/form?redirected=true";
+          // Try opening in a new window (which should open in Safari)
+          var newWindow = window.open(externalUrl, "_blank");
+          if (newWindow) {
+            newWindow.focus();
+          } else {
+            // Fallback: if pop-ups are blocked, force the location change
+            window.location.href = externalUrl;
+          }
+          return; // Stop further execution so the in-app page doesn't continue loading.
         }
       }
 
+      // Normal loading of the iframe if no redirection is required.
       var iframe = document.getElementById('iframe');
       var preloaderContainer = document.getElementById('preloader-container');
 
-      // Start loading the iframe in the background
       iframe.src = iframe.dataset.src;
 
       iframe.onload = function() {
@@ -140,11 +145,9 @@
 <body>
   <!-- Preloader Container -->
   <div id="preloader-container">
-    <!-- Preloader -->
     <div class="preloader-wrapper">
       <div class="spinner"></div>
     </div>
-    <!-- Loading Text -->
     <div class="loading-text">Loading...</div>
   </div>
 
@@ -158,7 +161,6 @@
     </iframe>
   </div>
 
-  <!-- Deferred JavaScript Loading -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
 </body>
 </html>
